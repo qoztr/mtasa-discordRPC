@@ -3,6 +3,10 @@ local DiscordRPC = {
     appID = "", -- Discord Application ID
     logoName = "", -- Discord logo asset name
     timer = nil,
+    button = {
+        {label = "Connect To Server", url = "mtasa://127.0.0.1:22003"},
+        {label = "Discord Server", url = "https://discord.gg/"},
+    }
 }
 
 function DiscordRPC:init()
@@ -23,6 +27,8 @@ end
 
 function DiscordRPC:show()
     setDiscordRichPresenceAsset(self.logoName, self.title)
+    setDiscordRichPresenceButton(1, self.button[1].label, self.button[1].url)
+    setDiscordRichPresenceButton(2, self.button[2].label, self.button[2].url)
     setDiscordRichPresenceStartTime(1)
 end
 
